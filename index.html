@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +9,28 @@
 </head>
 <body>
 
-<header>
-  <div class="logo">Funngro</div>
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="services.html">Services</a>
-    <a href="#contact">Contact</a>
-    <a href="#">Login</a>
-  </nav>
-</header>
+<div id="mouse-bg"></div>
+<div id="cursor"></div>
 
-<section id="hero">
-  <div class="hero-content">
-    <h1>Smart Talent for Smart Companies</h1>
-    <p>Get cost-effective, creative output from talented teens — fast and reliable.</p>
-    <a href="services.html" class="btn">Hire Teenlancers</a>
-  </div>
-</section>
+  <header>
+    <div class="logo">
+      <img src="images/funngro-logo.svg" alt="Funngro Logo" class="logo-img">
+    </div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+  <section id="hero">
+    <div class="hero-content container">
+      <h1>Smart Talent for Smart Companies</h1>
+      <p>Get cost-effective, creative output from talented teens — fast and reliable.</p>
+      <a href="services.html" class="btn">Hire Teenlancers</a>
+      <img src="images/sharktank-phone.png" alt="Sharktank Phone" class="hero-phone">
+    </div>
+  </section>
 
 <section id="value-prop">
   <h2>Why Choose Funngro</h2>
@@ -103,5 +109,29 @@
 </footer>
 
 <script src="css/animations.js"></script>
+<script>
+const cursor = document.getElementById('cursor');
+const trailElements = [];  // stores trailing circles
+
+document.addEventListener('mousemove', (e) => {
+  // Move the main cursor
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+
+  // Create a trailing neon circle
+  const trail = document.createElement('div');
+  trail.classList.add('trail');
+  trail.style.top = `${e.clientY}px`;
+  trail.style.left = `${e.clientX}px`;
+  document.body.appendChild(trail);
+  trailElements.push(trail);
+
+  // Remove the trail after 1 second
+  setTimeout(() => {
+    trail.remove();
+  }, 1000);
+});
+</script>
+
 </body>
 </html>
